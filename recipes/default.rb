@@ -15,3 +15,5 @@ end
 service 'httpd' do 
  action [:enable, :start]
 end
+
+include_recipe 'lcd_web::users'
