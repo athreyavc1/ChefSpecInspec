@@ -12,7 +12,15 @@ unless os.windows?
   end
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+
+packages = ['httpd', 'net-tools']
+packages.each do | line | 
+ describe package(line) do 
+   it { should be_installed }
+ end 
+end 
+
+describe service('httpd') do 
+ it { should be_enabled }
+ it { should be_running }
 end
